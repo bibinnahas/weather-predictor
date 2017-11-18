@@ -52,7 +52,7 @@ Steps to run the application
 
 - Step 3 : Copy the input directory and jar to a directory. Run the application and see the output directory in the same path for the     prediction data file
  
-- Pattern : java -jar predictor-0.0.1-jar-with-dependencies.jar
+- Pattern : java -jar predictor-0.0.1-jar-with-dependencies.jar 2018-01-01
 
 # Output
 Each output record will be in the below format. There will be as many as records as the input locations for which the history data is available.
