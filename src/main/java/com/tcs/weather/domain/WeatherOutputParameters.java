@@ -101,7 +101,9 @@ public class WeatherOutputParameters {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append(locationOut + "|" + position + "|" + predictionDateOut + "|" + classificationOut + "|"
-				+ temperatureForecast + "|" + pressureForecast + "|" + humidityForecast);
+				+ Math.round(temperatureForecast * 100D) / 100D + "|" + Math.round(pressureForecast * 100D) / 100D + "|"
+				+ Math.round(humidityForecast * 100D) / 100D);
 		return builder.toString();
 	}
+
 }

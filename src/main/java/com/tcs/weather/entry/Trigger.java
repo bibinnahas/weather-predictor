@@ -47,8 +47,15 @@ public class Trigger {
 			// Passes the Future date for weather prediction
 			final String inputdate = args[0];
 
-			// Check if the input date is a future date.
+			// Check if the input date is a valid date.
+			if (!DateUtils.isValidDate(inputdate)) {
+				LOGGER.error("Invalid date. Check the input date entered. Exiting now.");
+				System.exit(1);
+			}
+			
 			boolean isFuture = DateUtils.checkIfFutureDate(inputdate);
+			
+			// Check if the input date is a future date.
 			if (!isFuture) {
 				LOGGER.error("Invalid input value. Expecting a future date. Exiting now.");
 				System.exit(1);

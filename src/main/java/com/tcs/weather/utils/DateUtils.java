@@ -49,11 +49,11 @@ public class DateUtils {
 	}
 
 	/**
+	 * Extract month from given Date and returns it
+	 * 
 	 * @param passedDate
 	 * @param format
 	 * @return
-	 * 
-	 * 		Extract month from given Date and returns it
 	 */
 	public static int getMonth(final Date passedDate, final String format) {
 
@@ -77,14 +77,14 @@ public class DateUtils {
 	}
 
 	/**
+	 * Returns List of dates between the input Future Date and the date after
+	 * subtracting the period of days
+	 * 
 	 * @param dateString
 	 * @param format
 	 * @param period
 	 * @return
 	 * @throws ParseException
-	 * 
-	 *             Returns List of dates between the input Future Date and the
-	 *             date after subtracting the period of days
 	 */
 	public static List<Date> listPreviousDates(final String dateString, final String format, final int period)
 			throws ParseException {
@@ -104,11 +104,28 @@ public class DateUtils {
 	}
 
 	/**
+	 * Check if the input date entered is valid or not
+	 * 
+	 * @param inDate
+	 * @return boolean
+	 */
+	public static boolean isValidDate(String inDate) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		dateFormat.setLenient(false);
+		try {
+			dateFormat.parse(inDate.trim());
+		} catch (ParseException pe) {
+			return false;
+		}
+		return true;
+	}
+
+	/**
 	 * Checks whether the given date is future date.
 	 * 
 	 * @param inputdate
 	 * @return boolean
-	 * @throws WeatherPredictorException 
+	 * @throws WeatherPredictorException
 	 * @throws ParseException
 	 */
 	public static boolean checkIfFutureDate(final String inputdate) throws WeatherPredictorException {
@@ -122,10 +139,9 @@ public class DateUtils {
 			final Long longTime = givenDate.getTime();
 			final Date next = new Date(longTime);
 			return (next.after(current) || (next.equals(current))) ? true : false;
-			
+
 		} catch (ParseException e) {
 			throw new WeatherPredictorException("Incorrect date format; Expecting 'yyyy-MM-dd' format");
 		}
-		
 	}
 }

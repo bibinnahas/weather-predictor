@@ -9,7 +9,6 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.log4j.Logger;
 
 import com.tcs.weather.constants.Constants;
-import com.tcs.weather.entry.Trigger;
 import com.tcs.weather.exception.WeatherPredictorException;
 
 /**
@@ -57,7 +56,7 @@ public class CommonUtils {
 	 * @param date
 	 *            - Used to name the file
 	 * @return PrintWriter
-	 * @throws WeatherPredictorException 
+	 * @throws WeatherPredictorException
 	 * @throws FileNotFoundException
 	 */
 	public static PrintWriter createOutputFile(final String date) throws WeatherPredictorException {
@@ -75,7 +74,8 @@ public class CommonUtils {
 		try {
 			return new PrintWriter(outputLocationName);
 		} catch (FileNotFoundException e) {
-			throw new WeatherPredictorException("Failed to create output file at "+System.getProperty("user.dir") + "/output");
+			throw new WeatherPredictorException(
+					"Failed to create output file at " + System.getProperty("user.dir") + "/output");
 		}
 	}
 
@@ -95,6 +95,10 @@ public class CommonUtils {
 		} else if (temperature >= 5 && temperature <= 24 && Humidity >= 60 && pressure <= 990) {
 			classification = "Rain";
 		} else if (temperature < 24 && Humidity < 60 && pressure < 990) {
+			classification = "Rain";
+		} else if (temperature < 24 && Humidity > 60 && pressure > 990) {
+			classification = "Rain";
+		} else if (temperature > 24 && Humidity < 60 && pressure > 990) {
 			classification = "Sunny";
 		} else if (temperature < 5 && Humidity >= 60) {
 			classification = "Snow";
@@ -102,7 +106,9 @@ public class CommonUtils {
 			classification = "Rain";
 		} else if (temperature >= 5 && temperature <= 24 && Humidity < 60 && pressure > 1005) {
 			classification = "Sunny";
-		} else if (temperature < 24 && Humidity > 60 && pressure > 1005) {
+		} else if (temperature < 24 && Humidity > 60 && pressure >= 1005) {
+			classification = "Rain";
+		} else if (temperature > 24 && Humidity < 60 && pressure > 999 && pressure > 1005) {
 			classification = "Rain";
 		} else {
 			classification = "Missing";

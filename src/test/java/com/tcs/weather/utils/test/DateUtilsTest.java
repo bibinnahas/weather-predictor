@@ -63,4 +63,12 @@ public class DateUtilsTest {
 		assertTrue(DateUtils.checkIfFutureDate(date));
 		assertFalse(DateUtils.checkIfFutureDate("2015-05-06"));
 	}
+
+	@Test
+	public void isValidDateTest() {
+		String testDate;
+		testDate = "2018-13-12";
+		assertEquals(false, DateUtils.isValidDate(testDate));
+
+	}
 }
