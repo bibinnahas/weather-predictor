@@ -57,5 +57,5 @@ Steps to run the application
 # Output
 Each output record will be in the below format. There will be as many as records as the input locations for which the history data is available.
 - Pattern: location|latitude,longitude,elevation|date|climate_conditions|temperature|pressure|humidity
-- e.g., ADELAIDE|-34.92,138.60,7|2018-01-01|Rain|21.44|1010.91|62.64
+- e.g., ADELAIDE|-34.92,138.60,7|2018-01-01T00:00:00Z|Rain|21.45|1010.91|62.64
 
