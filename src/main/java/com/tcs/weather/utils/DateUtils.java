@@ -144,4 +144,21 @@ public class DateUtils {
 			throw new WeatherPredictorException("Incorrect date format; Expecting 'yyyy-MM-dd' format");
 		}
 	}
+
+	/**
+	 * Converts date string "yyyy-MM-dd" to ISO8601 "yyyy-MM-dd'T'HH:mm:SS'Z'"
+	 * 
+	 * @return date (ISO8602)
+	 * @throws WeatherPredictorException
+	 * 
+	 */
+	public static String toIsoFormatTimeStamp(final String date) throws WeatherPredictorException {
+
+		DateFormat df = new SimpleDateFormat(Constants.OUTPUT_DATE_FORMAT);
+		try {
+			return df.format(toDate(date, Constants.DATE_FORMAT));
+		} catch (ParseException e) {
+			throw new WeatherPredictorException("Incorrect date format; Expecting 'yyyy-MM-dd' format");
+		}
+	}
 }

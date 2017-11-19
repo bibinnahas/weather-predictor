@@ -101,7 +101,7 @@ public class WeatherForecast {
 						getPredictionVariables(historyDays, temperature, humidity, pressure, elements);
 						weatherInputParams.setLocation(location);
 						weatherInputParams.setPositionOut(position);
-						weatherInputParams.setPredictionDate(inputdate);
+						weatherInputParams.setPredictionDate(DateUtils.toIsoFormatTimeStamp(inputdate));
 					}
 					in.close();
 				} catch (FileNotFoundException e) {

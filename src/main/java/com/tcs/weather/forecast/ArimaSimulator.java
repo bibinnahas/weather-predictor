@@ -20,7 +20,7 @@ public class ArimaSimulator {
 	 * @return double
 	 */
 	public double getForecastData(final double[] tempList) {
-		// Setting ARIMA paramters
+		// Setting ARIMA parameters
 		final int p = Constants.ARIMA_p;
 		final int d = Constants.ARIMA_d;
 		final int q = Constants.ARIMA_q;

@@ -13,6 +13,7 @@ public class Constants {
 	// Constants for Date Utilities
 	public static final String DATE_FORMAT = "yyyy-MM-dd";
 	public static final String CONVERTED_DATE_FORMAT = "E MMM dd HH:mm:ss Z yyyy";
+	public static final String OUTPUT_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:SS'Z'";
 
 	// Constants for period of days to consider the variables for prediction
 	public static final int PERIOD = 10;

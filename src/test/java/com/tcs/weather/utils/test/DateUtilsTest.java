@@ -17,6 +17,8 @@ import com.tcs.weather.utils.DateUtils;
 public class DateUtilsTest {
 	public static Calendar cal = Calendar.getInstance();
 	String date = "2018-10-05";
+	String pastDate = "2017-10-10";
+	String invalidDate = "2018-13-29";
 	DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 	DateFormat formatter = new SimpleDateFormat("E MMM dd HH:mm:ss Z yyyy");
 
@@ -51,8 +53,8 @@ public class DateUtilsTest {
 	public void listPreviousDatesTest() {
 		Date testDate;
 		try {
-			testDate = formatter.parse("Sun Dec 31 00:00:00 IST 2017");
-			assertEquals(testDate, DateUtils.listPreviousDates("2018-01-02", Constants.DATE_FORMAT, 2).get(0));
+			testDate = formatter.parse("Wed Oct 03 00:00:00 IST 2018");
+			assertEquals(testDate, DateUtils.listPreviousDates(date, Constants.DATE_FORMAT, 2).get(0));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -61,14 +63,21 @@ public class DateUtilsTest {
 	@Test
 	public void checkIfFutureDateTest() throws ParseException, WeatherPredictorException {
 		assertTrue(DateUtils.checkIfFutureDate(date));
-		assertFalse(DateUtils.checkIfFutureDate("2015-05-06"));
+		assertFalse(DateUtils.checkIfFutureDate(pastDate));
 	}
 
 	@Test
 	public void isValidDateTest() {
-		String testDate;
-		testDate = "2018-13-12";
-		assertEquals(false, DateUtils.isValidDate(testDate));
+		assertEquals(false, DateUtils.isValidDate(invalidDate));
 
+	}
+
+	@Test
+	public void toIsoFormatTimeStampTest() {
+		try {
+			assertEquals("2018-10-05T00:00:00Z", DateUtils.toIsoFormatTimeStamp(date));
+		} catch (WeatherPredictorException e) {
+			e.printStackTrace();
+		}
 	}
 }
